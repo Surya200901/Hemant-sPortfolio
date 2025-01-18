@@ -35,18 +35,29 @@
             font-style: italic;
         }
 
+       /* Navigation Styles */
         nav {
             display: flex;
             justify-content: center;
+            align-items: center; /* Vertically centers the icons */
             background: #333;
             padding: 0.5rem 0;
+            overflow: hidden; /* Prevent overflow */
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 0.8rem; /* Reduce padding for smaller size */
+            font-size: 0.9rem; /* Reduce font size */
+            display: flex; /* Ensure icons and text are aligned */
+            align-items: center; /* Center icon and text vertically */
             transition: background 0.3s ease;
+            white-space: nowrap; /* Prevent text from breaking into new lines */
+        }
+
+        nav a i {
+            margin-right: 6px; /* Adjust space between icon and text */
         }
 
         nav a:hover {
@@ -429,193 +440,56 @@
             margin-left: auto; /* Center the image */
             margin-right: auto; /* Center the image */
         }  
-        
-        /* Mobile Navigation */
-  @media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        background: #333;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        right: 0;
-        text-align: center;
-        padding: 10px 0;
+
+         /* Mobile Styles */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
     }
 
-    .nav-links.active {
+    header p {
+        font-size: 1rem;
+    }
+
+    .mobile-filter {
+        display: block; /* Show dropdown on mobile */
+        width: calc(100% - 2rem);
+        margin: 1rem auto;
+        padding: 0.5rem;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    /* Hide desktop navigation on mobile */
+    .desktop-nav {
+        display: none;
+    }
+
+    /* Show hamburger menu icon */
+    .hamburger {
+        display: block;
+    }
+}
+
+/* Desktop Styles */
+@media (min-width: 769px) {
+    /* Hide the mobile filter on desktop */
+    .mobile-filter {
+        display: none;
+    }
+
+    /* Show the desktop navigation */
+    .desktop-nav {
         display: flex;
     }
 
+    /* Hide hamburger on desktop */
     .hamburger {
-        display: block;
-        position: absolute;
-        right: 20px;
-        top: 10px;
-        color: white;
+        display: none;
     }
-    
-  }
-    html {
-        scroll-behavior: smooth;
-    }
+}
 
-    /* Mobile Filter Styling */
-  .mobile-filter {
-    display: none;
-    width: 90%;
-    margin: 15px auto;
-    padding: 12px;
-    font-size: 1em;
-    border: none;
-    border-radius: 10px;
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-    color: #b1a9c6;
-    box-shadow: 0 4px 8px rgba(229, 211, 14, 0.3);
-    text-align: center;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    cursor: pointer;
-    position: relative;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath fill='%23333333' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 15px center;
-    background-size: 16px;
-    transition: all 0.3s ease;
-  }
-
-  .mobile-filter:hover {
-    background: linear-gradient(135deg, #fad0c4, #ff9a9e);
-    box-shadow: 0 6px 12px rgba(220, 47, 17, 0.4);
-    transform: translateY(-2px);
-  }
-
-  .mobile-filter:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(255, 154, 158, 0.5);
-  }
-
-  .mobile-filter option {
-    color: #d41919;
-    background: #fff;
-    padding: 10px;
-  }
-
-  /* Fixing Three-Line Dropdown Arrow */
-  .mobile-filter::after {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 50%;
-    right: 15px;
-    transform: translateY(-50%);
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 6px solid #d22c13;
-  }
-
-  /* Media Query for Mobile */
-  @media (max-width: 768px) {
-    .mobile-filter {
-      display: block;
-      color: #fff;
-    }
-  }
-
-  .resume-section {
-    text-align: center;
-    margin: 50px 0;
-  }
-  
-  .resume-section h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-  
-  .download-button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 1rem;
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-  
-  .download-button:hover {
-    background-color: #0056b3;
-  }
-
-  .hidden {
-    display: none;
-  }
-  
-  #toast-message {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #28a745;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 14px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    transition: opacity 0.3s ease-in-out;
-  }
-
-  /* Responsive styling */
-  @media (max-width: 768px) {
-    header h1 {
-        font-size: 2.5em;
-    }
-
-    nav a {
-        font-size: 0.9em;
-    }
-
-    .card {
-        width: 90%;
-    }
-
-    .centered-heading {
-        font-size: 2.5em;
-    }
-  }
-
-  nav {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-       
-        .hamburger {
-          display: none;
-          font-size: 2rem;
-          cursor: pointer;
-        }
-    
-      .nav-links {
-          display: flex;
-          justify-content: center;
-          gap: 20px;
-        }
-
-        .section-title {
-            font-size: 2.5em;
-            color: #333;
-            text-align: center;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
                   
     </style>
 </head>
@@ -624,37 +498,41 @@
 <header>
     <h1><i class="fas fa-user"></i> Hemanth Kummaripalli</h1>
     <p>Efficient Engineer | Problem Solver | ECE Graduate</p>
+    <p>Discover my journey, projects, and skills.</p>
 </header>
 
-<nav>
-    <span class="hamburger"><i class="fas fa-bars"></i></span>
+<!-- Desktop Navigation -->
+<nav class="desktop-nav">
     <a href="#about"><i class="fas fa-user"></i> About Me</a>
+    <a href="#resume"><i class="fas fa-download"></i> Resume</a>
     <a href="#skills"><i class="fas fa-code"></i> Skills</a>
+    <a href="#tools"><i class="fas fa-tools"></i> Tools</a>
     <a href="#projects"><i class="fas fa-project-diagram"></i> Academic Project</a>
     <a href="#education"><i class="fas fa-graduation-cap"></i> Education</a>
     <a href="#internship"><i class="fas fa-briefcase"></i> Internship</a>
     <a href="#certificates"><i class="fas fa-certificate"></i> Certifications</a>
-    <a href="#workshops"><i class="fas fa-tools"></i> Workshops</a>
+    <a href="#workshops"><i class="fas fa-cogs"></i> Workshops</a>
     <a href="#hobbies"><i class="fas fa-heart"></i> Hobbies</a>
     <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+</nav>
+
 
     <!-- Mobile Dropdown Filter -->
-    <select id="mobile-filter" class="mobile-filter">
-        <option value="">-- Select Section --</option>
-        <option value="#about">About Me</option>
-        <option value="#resume">Resume</option>
-        <option value="#projects">Projects</option>
-        <option value="#skills">Skills</option>
-        <option value="#tools">Tools</option>
-        <option value="#education">Education</option>
-        <option value="#certificates">Certificates</option>
-        <option value="#achievements">Achievements</option>
-        <option value="#hobbies">Hobbies</option>
-        <option value="#contact">Contact</option>
-    </select>
+<select id="mobile-filter" class="mobile-filter">
+    <option value="">-- Select Section --</option>
+    <option value="#about">About Me</option>
+    <option value="#resume">Resume</option>
+    <option value="#projects">Projects</option>
+    <option value="#skills">Skills</option>
+    <option value="#tools">Tools</option>
+    <option value="#education">Education</option>
+    <option value="#certificates">Certificates</option>
+    <option value="#hobbies">Hobbies</option>
+    <option value="#contact">Contact</option>
+</select>
 
-</nav>
-</nav>
+<!-- Hamburger Menu for Mobile -->
+<span class="hamburger"><i class="fas fa-bars"></i></span>
 
 <section id="about">
     <h2><i class="fas fa-user"></i> About Me</h2>
@@ -727,6 +605,31 @@
     <p><strong>Role:</strong> Developer</p>
 </section>
 
+<section id="tools">
+    <h2><i class="fas fa-graduation-hammer"></i> Tools</h2>
+    <ul>
+        <li>
+            <div class="card">
+                <span class="cgpa-highlight">Nmap</span>
+            </div>
+        </li>
+        <li>
+            <div class="card">
+                <span class="cgpa-highlight">Burp Suite</span>
+            </div>
+        </li>
+        <li>
+            <div class="card">
+                <span class="cgpa-highlight">Wireshark</span>
+            </div>
+        </li>
+        <li>
+            <div class="card">
+                <span class="cgpa-highlight">VScode</span>
+            </div>
+        </li>
+        </ul>
+</section>
 
 <section id="education">
     <h2><i class="fas fa-graduation-cap"></i> Education</h2>
@@ -841,32 +744,21 @@
     });
 
     const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    const mobileFilter = document.getElementById('mobile-filter');
-  
-    // Toggle navigation links on hamburger click
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      document.body.classList.toggle('no-scroll');
-    });
-  
-    // Navigate to the selected section on mobile filter change
-    mobileFilter.addEventListener('change', (event) => {
-      const sectionId = event.target.value;
-      if (sectionId) {
+    const navLinks = document.querySelector('.desktop-nav');
+
+// Toggle the visibility of the navigation links in mobile view
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+// Scroll to the selected section when mobile filter changes
+const mobileFilter = document.getElementById('mobile-filter');
+mobileFilter.addEventListener('change', (event) => {
+    const sectionId = event.target.value;
+    if (sectionId) {
         document.querySelector(sectionId).scrollIntoView({ behavior: 'smooth' });
-      }
-    });
+    }
+});
 
-  const sections = document.querySelectorAll('section');
-
-    const revealSections = () => {
-        sections.forEach(section => {
-            const rect = section.getBoundingClientRect();
-            if (rect.top <= window.innerHeight * 0.75) {
-                section.classList.add('visible');
-            }
-        });
-    };
   </script>
 </html>
